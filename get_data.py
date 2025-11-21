@@ -2,12 +2,12 @@ from tinkoff.invest import Client, CandleInterval
 from datetime import datetime, timedelta
 import pandas as pd
 
-TOKEN = "t.sWXWh2h48nFyH3cFr886QxrA9xNOHh2Sy6ULpJydAb0f_7_HbQqfUaRbQ6BmGI6cMRNT6fcC4VmRYW7NmzOseg"   # <-- поставьте ваш API-ключ
+TOKEN = ""   
 
-FIGI_LUKOIL = "BBG004731032"   # FIGI Лукойл
+FIGI_LUKOIL = "BBG004731032"   
 INTERVAL = CandleInterval.CANDLE_INTERVAL_1_MIN
-NEEDED = 40000                 # сколько свечей нужно
-CSV_FILE = "lukoil_ohlc.csv"   # имя выходного файла
+NEEDED = 40000                 
+CSV_FILE = "lukoil_ohlc.csv"   
 
 def get_minutes_data(token, figi, needed):
     all_candles = []
@@ -56,16 +56,13 @@ def candles_to_df(candles):
     return pd.DataFrame(rows)
 
 
-# --- ЗАГРУЗКА ---
 candles = get_minutes_data(TOKEN, FIGI_LUKOIL, NEEDED)
 
-# --- ПЕРЕВОД В DATAFRAME ---
 df = candles_to_df(candles)
 
-# --- СОРТИРОВКА ПО ВРЕМЕНИ ---
 df = df.sort_values("time")
 
-# --- СОХРАНЕНИЕ В CSV ---
 df.to_csv(CSV_FILE, index=False, encoding="utf-8")
 
 print(f"Данные сохранены в {CSV_FILE}")
+
