@@ -4,12 +4,7 @@ from sklearn.model_selection import TimeSeriesSplit
 from backtest.backtester import Backtester
 
 def optimize_hyperparams(df, grid, preds_col='pred', exec_params=None):
-    """
-    Grid search для оптимизации stop_loss, take_profit и pos_mult.
-    df: DataFrame с колонкой preds_col
-    grid: dict с ключами ['stop_loss','take_profit','pos_mult']
-    exec_params: dict с execution параметрами (commission, slippage, limit fill)
-    """
+
     keys = sorted(grid.keys())
     combos = list(itertools.product(*(grid[k] for k in keys)))
     best = None
@@ -38,3 +33,4 @@ def optimize_hyperparams(df, grid, preds_col='pred', exec_params=None):
             best = {'params': params, 'score': avg_score}
 
     return best
+
