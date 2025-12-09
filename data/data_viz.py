@@ -18,7 +18,7 @@ from tkinter import ttk, scrolledtext, messagebox
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 
-TOKEN = "t.sWXWh2h48nFyH3cFr886QxrA9xNOHh2Sy6ULpJydAb0f_7_HbQqfUaRbQ6BmGI6cMRNT6fcC4VmRYW7NmzOseg"
+TOKEN = ""
 FIGI_LUKOIL = "BBG004731032"
 INTERVAL = CandleInterval.CANDLE_INTERVAL_1_MIN
 RAW_CSV_FILE = "lukoil_ohlc.csv"
@@ -408,3 +408,4 @@ class TradingApp(tk.Tk):
 if __name__ == "__main__":
     app = TradingApp()
     app.mainloop()
+
